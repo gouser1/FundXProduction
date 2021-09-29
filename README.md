@@ -33,7 +33,7 @@ If the installation was successful, you should be able to run the following comm
     $ npm --version
     6.1.0
 
-If you need to update `npm`, you can make it using `npm`! After running the following command, just open again the command line and be happy.
+If you need to update `npm`, you can do so with using `npm update`! After running the following command, just open again the command line and be happy.
 
     $ npm install npm -g
 
@@ -41,7 +41,7 @@ If you need to update `npm`, you can make it using `npm`! After running the foll
 
 ## Install
 
-    $ git clone https://github.com/gouser1/fundXproduction
+    $ git clone https://github.com/gouser1/FundXProduction
     $ cd fundXProduction
     $ npm install
 
@@ -51,7 +51,7 @@ If you need to update `npm`, you can make it using `npm`! After running the foll
 
 ## Configure app
 
-Open `/index.js` then edit it with your settings. You will need:
+Open `/index.js` then edit with your settings. You will need:
 
 - Change the port you want Node to serve from on line 24
 
