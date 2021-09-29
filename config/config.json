@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "fundx",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "b8e3006fac7d7f",
+    "password": "b53890ef",
+    "database": "heroku_38063a040faf772",
+    "host": "eu-cdbr-west-01.cleardb.com",
+    "dialect": "mysql"
+  }
+}
