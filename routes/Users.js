@@ -14,7 +14,7 @@ router.get('/users', validateToken, async (req, res) => {
   }
 });
 
-// send users post request - async and await to wait for data to be inserted before moving on
+// create user request
 router.post('/', async (req, res) => {
   const {
     email,
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
       age: age,
       bio: bio,
     });
-    res.json('SUCCESS');
+    res.json('User successfully created');
   });
 });
 
@@ -62,14 +62,13 @@ router.put('/updateprofile', validateToken, function (req, res, next) {
     }
   )
     .then(function (rowsUpdated) {
-      res.json('Number of rows updated: ' + rowsUpdated);
+      res.json('User Updated. Number of rows updated: ' + rowsUpdated);
     })
     .catch(next);
 });
 
 // admin update user
 router.put('/updateuser', validateToken, function (req, res, next) {
-  console.log('HERE... ', req.res.locals.userLoggedIn);
   Users.update(
     {
       email: req.body.email,
@@ -87,7 +86,7 @@ router.put('/updateuser', validateToken, function (req, res, next) {
     }
   )
     .then(function (rowsUpdated) {
-      res.json('Number of rows updated: ' + rowsUpdated);
+      res.json('User Updated. Number of rows updated: ' + rowsUpdated);
     })
     .catch(next);
 });
@@ -101,7 +100,7 @@ router.delete('/delete/:Id', async (req, res) => {
       id: Id,
     },
   });
-  res.json('DELETED SUCCESSFULLY');
+  res.json('User deleted');
 });
 
 router.post('/login', async (req, res) => {
@@ -152,7 +151,7 @@ router.put('/changepassword', validateToken, async (req, res) => {
         { password: hash },
         { where: { displayName: req.user.displayName } }
       );
-      res.json('SUCCESS');
+      res.json('Password changed successfully');
     });
   });
 });

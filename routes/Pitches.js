@@ -3,14 +3,6 @@ const router = express.Router();
 const { Pitches, Favourites } = require('../models');
 const { validateToken } = require('../middlewares/AuthMiddleware');
 const { Op } = require('sequelize');
-// router.get('/', validateToken, async (req, res) => {
-//   const pitchList = await Pitches.findAll({ include: [Favourites] });
-//   // get all the favourites that includes the user id = to user id logged in
-//   const favouritedPitches = await Favourites.findAll({
-//     where: { UserId: req.user.id },
-//   });
-//   res.json({ pitchList: pitchList, favouritedPitches: favouritedPitches });
-// });
 
 router.get('/', async (req, res) => {
   let country = req.query.country;

@@ -12,14 +12,13 @@ const db = require('./models');
 const userRouter = require('./routes/Users');
 app.use('/auth', userRouter);
 
-const postRouter = require('./routes/Pitches');
-app.use('/pitches', postRouter);
+const pitchRouter = require('./routes/Pitches');
+app.use('/pitches', pitchRouter);
 
 const favouritesRouter = require('./routes/Favourites');
 app.use('/favourite', favouritesRouter);
 
-// listen to port and check models for tables
-
+// sync models with db tables
 db.sequelize.sync().then(() => {
   app.listen(process.env.PORT || 3001, () => {
     console.log(`ONLINE`);
