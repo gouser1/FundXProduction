@@ -8,11 +8,9 @@ A React based web application with a node serve for connecting businesses seekin
 
 API documentation can be found at the following links:
 
-    [USERS API](https://www.apimatic.io/api-docs-preview/dashboard/615661fb2a2e7587ebc258f7/v/1_0#/http/step-by-step-tutorial)
-     [USERS API](https://nodejs.org/)
-     [Lets go to Quora](https://www.quora.com)
-    [PITCHES API](https://www.apimatic.io/api-docs-preview/dashboard/615662b52a2e7587ebc27014/v/1_0#/http/step-by-step-tutorial)
-    [FAVOURITE API](https://www.apimatic.io/api-docs-preview/dashboard/615662f62a2e7587ebc272c6/v/1_0#/http/step-by-step-tutorial)
+[USERS API](https://www.apimatic.io/api-docs-preview/dashboard/615661fb2a2e7587ebc258f7/v/1_0#/http/step-by-step-tutorial)
+[PITCHES API](https://www.apimatic.io/api-docs-preview/dashboard/615662b52a2e7587ebc27014/v/1_0#/http/step-by-step-tutorial)
+[FAVOURITE API](https://www.apimatic.io/api-docs-preview/dashboard/615662f62a2e7587ebc272c6/v/1_0#/http/step-by-step-tutorial)
 
 ## Requirements
 
