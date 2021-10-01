@@ -8,6 +8,9 @@ A React based web application with a node serve for connecting businesses seekin
 
 API documentation can be found at the following links:
 
+NOTE: An Apimatic account is needed to view the documentation
+Alternatively you can access the JSON files from the API documentation folder and open them in [Postman](https://www.postman.com/)
+
 [Users API](https://www.apimatic.io/api-docs-preview/dashboard/615661fb2a2e7587ebc258f7/v/1_0#/http/step-by-step-tutorial) ||
 [Pitches API](https://www.apimatic.io/api-docs-preview/dashboard/615662b52a2e7587ebc27014/v/1_0#/http/step-by-step-tutorial) ||
 [Favourites API](https://www.apimatic.io/api-docs-preview/dashboard/615662f62a2e7587ebc272c6/v/1_0#/http/step-by-step-tutorial)

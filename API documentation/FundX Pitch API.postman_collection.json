@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "193c3d1e-6d5a-424e-96b3-faf79a11d9fe",
+		"name": "FundX Pitch API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pitches",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"pitchTitle\": \"test\",\r\n \"website\": \"blaaa\",\r\n \"location\": \"NI\",\r\n \"country\": \"UK\",\r\n \"industry\": \"Food & Beverage\",\r\n \"industry2\": \"Media\",\r\n \"idealInvestmentRole\": \"Daily Involvement\",\r\n \"capitalNeeded\": \"2500\",\r\n \"capitalRaised\": \"20000\",\r\n \"pitchInfo\": \"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/pitches",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pitch",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6ImdvdXNlciIsImlkIjoxLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2MzMwNDgxODl9.EUtrKHXyTP5GqUVKhxB97a3kJuTAzHrdrFOywUhp0OY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pitchTitle\": \"NewPitch\",\r\n    \"website\": \"www.NewPitch.com\",\r\n    \"contactEmail\": \"NewPitch@NewPitch.com\",\r\n    \"location\": \"London\",\r\n    \"country\": \"GB\",\r\n    \"industry\": \"Media\",\r\n    \"industry2\": \"Finance\",\r\n    \"idealInvestmentRole\": \"Silent\",\r\n    \"capitalNeeded\": \"10000\",\r\n    \"capitalRaised\": \"1000\",\r\n    \"pitchInfo\": \"New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch TextNew Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch TextNew Pitch Text New Pitch Text New Pitch TextNew Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch TextNew Pitch Text New Pitch Text New Pitch Text New Pitch Text New Pitch Text\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/pitches",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pitch by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/pitches/byId/11",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches",
+						"byId",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pitches by User ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/pitches/byuserId/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches",
+						"byuserId",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pitch",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6ImdvdXNlciIsImlkIjoxLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2MzMwNDgxODl9.EUtrKHXyTP5GqUVKhxB97a3kJuTAzHrdrFOywUhp0OY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"pitchTitle\": \"test\",\r\n \"website\": \"blaaa\",\r\n \"location\": \"NI\",\r\n \"country\": \"UK\",\r\n \"industry\": \"Food & Beverage\",\r\n \"industry2\": \"Media\",\r\n \"idealInvestmentRole\": \"Daily Involvement\",\r\n \"capitalNeeded\": \"2500\",\r\n \"capitalRaised\": \"20000\",\r\n \"pitchInfo\": \"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/pitches/19",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches",
+						"19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pitches of logged in user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6ImdvdXNlciIsImlkIjoxLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2MzMwNDgxODl9.EUtrKHXyTP5GqUVKhxB97a3kJuTAzHrdrFOywUhp0OY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3001/pitches/userspitches",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"pitches",
+						"userspitches"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

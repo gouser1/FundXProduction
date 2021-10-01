@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "53574bdb-1868-48c3-bfd1-ce0d8d1d47e6",
+		"name": "FundX Favourites API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get logged in User's Favourites",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6ImdvdXNlciIsImlkIjoxLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2MzMwNDgxODl9.EUtrKHXyTP5GqUVKhxB97a3kJuTAzHrdrFOywUhp0OY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/favourite/userfavourites",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"favourite",
+						"userfavourites"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
