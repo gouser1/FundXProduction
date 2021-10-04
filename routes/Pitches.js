@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Pitches, Favourites } = require('../models');
-const { validateToken } = require('../middlewares/Auth').default;
+const { validateToken } = require('../middlewares/Auth');
 const { Op } = require('sequelize');
 
 // Get Pitches

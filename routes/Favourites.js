@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Favourites, Pitches } = require('../models');
-const { validateToken } = require('../middlewares/Auth').default;
+const { validateToken } = require('../middlewares/Auth');
 
 // Favourite Pitch
 router.post('/', validateToken, async (req, res) => {

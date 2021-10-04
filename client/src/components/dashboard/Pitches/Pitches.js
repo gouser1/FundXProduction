@@ -52,14 +52,16 @@ const Pitches = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/pitches", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setListOfPitches(response.data.pitchList);
-        setSelected(Math.floor(Math.random() * response.data.pitchList.length));
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/pitches",
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      },
+    }).then((response) => {
+      setListOfPitches(response.data.pitchList);
+      setSelected(Math.floor(Math.random() * response.data.pitchList.length));
+    });
   }, []);
 
   const favouritePitch = (pitchId) => {

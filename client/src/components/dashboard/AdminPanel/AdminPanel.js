@@ -127,7 +127,7 @@ function AdminPanel(props) {
 
   const updateUser = (id) => {
     axios({
-      method: "put", //you can set what request you want to be
+      method: "put",
       url: "http://localhost:3001/auth/updateuser",
       data: {
         email: newEmail,
