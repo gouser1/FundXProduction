@@ -1,21 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const { Pitches, Favourites } = require('../models');
-const { validateToken } = require('../middlewares/AuthMiddleware');
+const { validateToken } = require('../middlewares/Auth').default;
 const { Op } = require('sequelize');
 
+// Get Pitches
 router.get('/', async (req, res) => {
   let country = req.query.country;
   let industry;
+  // decodeURI of industry
   if (req.query.industry) {
     industry = decodeURI(req.query.industry);
   }
-
+  // Sort Queries
   if (country && industry) {
     const pitchList = await Pitches.findAll({
-      include: [Favourites],
+      include: [Favourites], // Include Favourites model for Pitches
       where: {
         country: country,
+        // Search for queried industry in industry or industry2 field
         [Op.or]: [{ industry: industry }, { industry2: industry }],
       },
     });
@@ -32,6 +35,7 @@ router.get('/', async (req, res) => {
       where: { [Op.or]: [{ industry: industry }, { industry2: industry }] },
     });
     res.json({ pitchList: pitchList });
+    // Else If there is no sort then return all Pitches
   } else if (!country && !industry) {
     const pitchList = await Pitches.findAll({
       include: [Favourites],
@@ -40,13 +44,14 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get pitch by id
 router.get('/byId/:id', async (req, res) => {
   const id = req.params.id;
   const pitch = await Pitches.findByPk(id);
   res.json(pitch);
 });
 
-// get all posts where user id is === to id in params
+// Get all pitches where user id is = to id in params
 router.get('/byuserId/:id', async (req, res) => {
   const id = req.params.id;
   const pitchList = await Pitches.findAll({
@@ -56,7 +61,7 @@ router.get('/byuserId/:id', async (req, res) => {
   res.json(pitchList);
 });
 
-// send Pitches post request - async and await to wait for data to be inserted before moving on
+// Create pitch
 router.post('/', validateToken, async (req, res) => {
   const pitch = req.body;
   pitch.displayName = req.user.displayName;
@@ -65,7 +70,7 @@ router.post('/', validateToken, async (req, res) => {
   res.json(pitch);
 });
 
-// Delete a pitch
+// Delete pitch
 router.delete('/:pitchId', validateToken, async (req, res) => {
   const pitchId = req.params.pitchId;
   await Pitches.destroy({
@@ -76,8 +81,7 @@ router.delete('/:pitchId', validateToken, async (req, res) => {
   res.json('DELETED SUCCESSFULLY');
 });
 
-// Get User Pitches
-
+// Get users pitches
 router.get('/userspitches', validateToken, async (req, res, next) => {
   const usersPitches = await Pitches.findAll({
     where: { UserId: req.res.locals.userLoggedIn.id },

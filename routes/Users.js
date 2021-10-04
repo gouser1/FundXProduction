@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { Users } = require('../models');
 const bcrypt = require('bcryptjs');
-const { validateToken, authUser } = require('../middlewares/AuthMiddleware');
+const { validateToken } = require('../middlewares/Auth').default;
 const { sign } = require('jsonwebtoken');
 
+// get users
 router.get('/users', validateToken, async (req, res) => {
   const userList = await Users.findAll();
   if (req.res.locals.userLoggedIn.role === 'Admin') {
@@ -14,7 +15,7 @@ router.get('/users', validateToken, async (req, res) => {
   }
 });
 
-// create user request
+// create user
 router.post('/', async (req, res) => {
   const {
     email,
@@ -44,7 +45,6 @@ router.post('/', async (req, res) => {
 });
 
 // update profile section
-
 router.put('/updateprofile', validateToken, function (req, res, next) {
   Users.update(
     {
@@ -92,7 +92,6 @@ router.put('/updateuser', validateToken, function (req, res, next) {
 });
 
 // delete user
-
 router.delete('/delete/:Id', async (req, res) => {
   const Id = req.params.Id;
   await Users.destroy({
@@ -103,13 +102,14 @@ router.delete('/delete/:Id', async (req, res) => {
   res.json('User deleted');
 });
 
+// login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  // tell sequelize to go to users table to find one user whos username matches the inputed username
+  // find and match user
   const user = await Users.findOne({ where: { email: email } });
 
   if (!user) res.json({ error: 'User does not exist' });
-  // compare inputed password to password user has stored in database
+  // password compare
   bcrypt.compare(password, user.password).then((match) => {
     if (!match)
       return res.json({ error: 'Wrong Username and Password Combination' });
@@ -122,7 +122,6 @@ router.post('/login', async (req, res) => {
 });
 
 // valid token check
-
 router.get('/auth', validateToken, (req, res) => {
   res.json(req.user);
 });
@@ -137,7 +136,6 @@ router.get('/userinfo/', validateToken, async (req, res) => {
 });
 
 // change password
-
 router.put('/changepassword', validateToken, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const user = await Users.findOne({
