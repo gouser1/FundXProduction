@@ -22,7 +22,7 @@ import cardImage from "../../../images/dashboard/placeholder.png";
 import userIcon from "../../../images/dashboard/usericon.png";
 import ArrowBack from "@material-ui/icons/ArrowBackIos";
 import ArrowForward from "@material-ui/icons/ArrowForwardIos";
-import useStyles from "./PitchesStyle";
+import useStyles from "./PitchesStyle"; // Component Styles
 
 const Pitches = () => {
   const [listOfPitches, setListOfPitches] = useState([]);
@@ -31,6 +31,7 @@ const Pitches = () => {
   let history = useHistory();
   const classes = useStyles();
 
+  // Next Pitch
   const handleNextPitch = () => {
     setSelected((prev) => {
       if (prev === listOfPitches.length - 1) {
@@ -41,6 +42,7 @@ const Pitches = () => {
     });
   };
 
+  // Previous Pitch
   const handlePreviousPitch = () => {
     setSelected((prev) => {
       if (prev === 0) {
@@ -51,6 +53,7 @@ const Pitches = () => {
     });
   };
 
+  // Get Pitches
   useEffect(() => {
     axios({
       method: "get",
@@ -59,51 +62,55 @@ const Pitches = () => {
         accessToken: localStorage.getItem("accessToken"),
       },
     }).then((response) => {
+      // Set list of pitches to data response from GET
       setListOfPitches(response.data.pitchList);
+      // Randomize order of Pitches in Pitch List
       setSelected(Math.floor(Math.random() * response.data.pitchList.length));
     });
   }, []);
 
+  // Favourite Pitch
   const favouritePitch = (pitchId) => {
-    axios
-      .post(
-        "http://localhost:3001/favourite",
-        { PitchId: pitchId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        // setting state of list to modified list
-        setListOfPitches(
-          listOfPitches.map((pitch) => {
-            if (pitch.id === pitchId) {
-              if (response.data.favourited) {
-                // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
-                return { ...pitch, Favourites: [...pitch.Favourites, 0] };
-              } else {
-                // Remove last element from array to update state of favourited post to remove favourite
-                const FavouritesArray = pitch.Favourites;
-                FavouritesArray.pop();
-                return { ...pitch, Favourites: FavouritesArray };
-              }
+    axios({
+      method: "post",
+      url: "http://localhost:3001/favourite",
+      data: {
+        PitchId: pitchId,
+      },
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      setListOfPitches(
+        listOfPitches.map((pitch) => {
+          if (pitch.id === pitchId) {
+            if (response.data.favourited) {
+              // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
+              return { ...pitch, Favourites: [...pitch.Favourites, 0] };
             } else {
-              return pitch;
+              // Remove last element from array to update state of favourited post to remove favourite
+              const FavouritesArray = pitch.Favourites;
+              FavouritesArray.pop();
+              return { ...pitch, Favourites: FavouritesArray };
             }
+          } else {
+            return pitch;
+          }
+        })
+      );
+      if (favouritedPitches.includes(pitchId)) {
+        setFavouritedPitches(
+          favouritedPitches.filter((id) => {
+            return id !== pitchId;
           })
         );
-        if (favouritedPitches.includes(pitchId)) {
-          setFavouritedPitches(
-            favouritedPitches.filter((id) => {
-              return id !== pitchId;
-            })
-          );
-        } else {
-          setFavouritedPitches([...favouritedPitches, pitchId]);
-        }
-      });
+      } else {
+        setFavouritedPitches([...favouritedPitches, pitchId]);
+      }
+    });
   };
 
   return (
     <div>
+      {/* Pitch starts here */}
       {listOfPitches.length > 0 ? (
         <Grid
           container
@@ -115,6 +122,7 @@ const Pitches = () => {
         >
           {" "}
           <Grid item xs={11} sm={10} md={6} lg={4}>
+            {/* Pitch card starts here */}
             <Card className={classes.card}>
               <CardContent>
                 <CardHeader
@@ -238,6 +246,7 @@ const Pitches = () => {
                   margin: "2%",
                 }}
               >
+                {/*Previous Pitch Button */}
                 <Button
                   onClick={() => {
                     handlePreviousPitch();
@@ -246,6 +255,8 @@ const Pitches = () => {
                   <ArrowBack color="primary" />
                   <Typography className={classes.p1}>Previous Pitch</Typography>
                 </Button>
+
+                {/*Next Pitch Button */}
                 <Button
                   onClick={() => {
                     handleNextPitch();
@@ -261,11 +272,13 @@ const Pitches = () => {
                 </Button>
               </Grid>
             </Card>
+            {/* Pitch card ends here */}
           </Grid>
         </Grid>
       ) : (
         <div></div>
       )}
+      {/* Pitch ends here */}
     </div>
   );
 };

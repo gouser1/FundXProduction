@@ -7,8 +7,9 @@ import Textfield from "../../FormsUI/Textfield/index";
 import Button from "../../FormsUI/Button/index";
 import MuiAlert from "@material-ui/lab/Alert";
 import { AuthContext } from "../../../helpers/AuthContext";
-import useStyles from "./ChangePasswordStyle";
+import useStyles from "./ChangePasswordStyle"; // Component Styles
 
+// Success/Fail Alert
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -25,40 +26,41 @@ function ChangePassword(props) {
   const [openSuccessSnackBar, setOpenSuccessSnackBar] = React.useState(false);
   const [openErrorSnackBar, setOpenErrorSnackBar] = React.useState(false);
 
+  // Access Token Check
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
   }, []);
 
+  // Change Password
   const changePassword = (data) => {
-    axios
-      .put(
-        "http://localhost:3001/auth/changepassword",
-        {
-          oldPassword: data.oldPassword,
-          newPassword: data.newPassword,
-        },
-        {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data === "SUCCESS") {
-          handleSuccessSnackBar();
-        } else {
-          handleErrorSnackBar();
-        }
-      });
+    axios({
+      method: "put",
+      url: "http://localhost:3001/auth/changepassword",
+      data: {
+        oldPassword: data.oldPassword,
+        newPassword: data.newPassword,
+      },
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // If Success display success alert
+      if (response.data === "SUCCESS") {
+        handleSuccessSnackBar();
+        // If Fail display error alert
+      } else {
+        handleErrorSnackBar();
+      }
+    });
   };
 
+  // Formik Register Form Set Sate
   const INITIAL_FORM_STATE = {
     oldPassword: "",
     newPassword: "",
   };
 
+  // Alert snackbars
   const handleSuccessSnackBar = () => {
     setOpenSuccessSnackBar(true);
   };
@@ -145,6 +147,7 @@ function ChangePassword(props) {
                     </Grid>
                   </Form>
                 </Formik>
+                {/* Alert Snackbars */}
                 <Snackbar
                   open={openSuccessSnackBar}
                   autoHideDuration={6000}
@@ -163,7 +166,7 @@ function ChangePassword(props) {
                   onClose={handleErrorSnackBarClose}
                 >
                   <Alert onClose={handleErrorSnackBarClose} severity="error">
-                    Passwords do not match!
+                    Current Password is incorrect!
                   </Alert>
                 </Snackbar>
               </div>

@@ -19,7 +19,7 @@ import cardImage from "../../../images/dashboard/placeholder.png";
 import userIcon from "../../../images/dashboard/usericon.png";
 import { useHistory, Link } from "react-router-dom";
 import { AuthContext } from "../../../helpers/AuthContext";
-import useStyles from "./MyPitchesStyle";
+import useStyles from "./MyPitchesStyle"; // Component Styles
 
 const MyPitches = () => {
   let history = useHistory();
@@ -33,35 +33,39 @@ const MyPitches = () => {
     status: false,
   });
 
+  // Get User's Pitches
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/pitches/userspitches", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setUsersPitches(response.data);
-        setIsSet(true);
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/pitches/userspitches",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // Set users pitches to response data of GET
+      setUsersPitches(response.data);
+      setIsSet(true);
+    });
+    // Access Token Check
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
   }, []);
 
+  // Delete User's Pitch
   const deletePitch = (id) => {
-    axios
-      .delete(`http://localhost:3001/pitches/${id}`, {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          history.go(0);
-        }
-      });
+    axios({
+      method: "delete",
+      url: `http://localhost:3001/pitches/${id}`, // Delete Pitch by ID
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // If successfully deleted, refresh page
+      if (response.status === 200) {
+        history.go(0);
+      }
+    });
   };
 
   if (isSet) {
+    // If No pitches for user then return -
     if (usersPitches.length === 0) {
       return (
         <div className={classes.root}>
@@ -84,6 +88,7 @@ const MyPitches = () => {
         </div>
       );
     } else {
+      // If the user has pitches then return -
       return (
         <AuthContext.Provider value={{ authState, setAuthState }}>
           <div className={classes.root}>
@@ -101,9 +106,11 @@ const MyPitches = () => {
                     Your Pitches
                   </Typography>
                   <Grid container spacing={3}>
+                    {/* List of user's pitches starts here */}
                     {usersPitches.map((value, key) => {
                       return (
                         <Grid item xs={12} md={4} lg={4}>
+                          {/* Pitch card starts here */}
                           <Paper className={classes.paper}>
                             <Card className={classes.card}>
                               <CardContent>
@@ -213,9 +220,11 @@ const MyPitches = () => {
                               </CardActions>
                             </Card>
                           </Paper>
+                          {/* Pitch card ends here */}
                         </Grid>
                       );
                     })}
+                    {/* List of user's pitches ends here */}
                   </Grid>
                 </Container>
               </Grid>

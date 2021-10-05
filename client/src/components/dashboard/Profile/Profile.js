@@ -22,7 +22,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import Location from "@material-ui/icons/LocationOn";
 import cardImage from "../../../images/dashboard/placeholder.png";
 import userIcon from "../../../images/dashboard/usericon.png";
-import useStyles from "./ProfileStyle";
+import useStyles from "./ProfileStyle"; // Component Styles
 
 function Profile(props) {
   let { id } = useParams();
@@ -36,57 +36,67 @@ function Profile(props) {
   const [favouritedPitches, setFavouritedPitches] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/auth/userinfo/`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDisplayName(response.data.displayName);
-      });
+    // Get Users Info
+    axios({
+      method: "get",
+      url: `http://localhost:3001/auth/userinfo/`,
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      },
+    }).then((response) => {
+      // Set Display to response data of GET display name
+      setDisplayName(response.data.displayName);
+    });
 
-    axios
-      .get(`http://localhost:3001/pitches/byuserId/${id}`)
-      .then((response) => {
-        setListOfPitches(response.data);
-      });
+    // Get Users Pitches
+    axios({
+      method: "get",
+      url: `http://localhost:3001/pitches/byuserId/${id}`,
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      },
+    }).then((response) => {
+      setListOfPitches(response.data);
+    });
   }, [id]);
 
+  // Favourite Pitch
   const favouritePitch = (pitchId) => {
-    axios
-      .post(
-        "http://localhost:3001/favourite",
-        { PitchId: pitchId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        // setting state of list to modified list
-        setListOfPitches(
-          listOfPitches.map((pitch) => {
-            if (pitch.id === pitchId) {
-              if (response.data.favourited) {
-                // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
-                return { ...pitch, Favourites: [...pitch.Favourites, 0] };
-              } else {
-                // Remove last element from array to update state of favourited post to remove favourite
-                const FavouritesArray = pitch.Favourites;
-                FavouritesArray.pop();
-                return { ...pitch, Favourites: FavouritesArray };
-              }
+    axios({
+      method: "post",
+      url: "http://localhost:3001/favourite",
+      data: {
+        PitchId: pitchId,
+      },
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      setListOfPitches(
+        listOfPitches.map((pitch) => {
+          if (pitch.id === pitchId) {
+            if (response.data.favourited) {
+              // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
+              return { ...pitch, Favourites: [...pitch.Favourites, 0] };
             } else {
-              return pitch;
+              // Remove last element from array to update state of favourited post to remove favourite
+              const FavouritesArray = pitch.Favourites;
+              FavouritesArray.pop();
+              return { ...pitch, Favourites: FavouritesArray };
             }
+          } else {
+            return pitch;
+          }
+        })
+      );
+      if (favouritedPitches.includes(pitchId)) {
+        setFavouritedPitches(
+          favouritedPitches.filter((id) => {
+            return id !== pitchId;
           })
         );
-        if (favouritedPitches.includes(pitchId)) {
-          setFavouritedPitches(
-            favouritedPitches.filter((id) => {
-              return id !== pitchId;
-            })
-          );
-        } else {
-          setFavouritedPitches([...favouritedPitches, pitchId]);
-        }
-      });
+      } else {
+        setFavouritedPitches([...favouritedPitches, pitchId]);
+      }
+    });
   };
   return (
     <div className={classes.root}>
@@ -96,6 +106,7 @@ function Profile(props) {
         className={classes.button}
         style={{ margin: "2%" }}
       >
+        {/* Back Page */}
         <ArrowBack color="white" />
         Back
       </Button>
@@ -110,9 +121,11 @@ function Profile(props) {
               {displayName}'s Pitches
             </Typography>
             <Grid container spacing={3}>
+              {/* List of user's pitches starts here */}
               {listOfPitches.map((value, key) => {
                 return (
                   <Grid item xs={12} md={4} lg={4}>
+                    {/* Pitch card starts here */}
                     <Paper className={classes.paper}>
                       <Card className={classes.card}>
                         <CardContent>
@@ -218,9 +231,11 @@ function Profile(props) {
                         </CardActions>
                       </Card>
                     </Paper>
+                    {/* Pitch card ends here */}
                   </Grid>
                 );
               })}
+              {/* List of user's pitches ends here */}
             </Grid>
           </Container>
         </Grid>

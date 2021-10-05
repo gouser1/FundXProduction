@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid, Box, Button } from "@material-ui/core";
-import useStyles from "./Hero2Style";
+import useStyles from "./Hero2Style"; // Component Styles
 import { AuthContext } from "../../../helpers/AuthContext";
 
 function Hero(props) {
@@ -13,21 +13,24 @@ function Hero(props) {
 
   const [authState, setAuthState] = useState(false);
 
+  // Access Token Check
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/auth/auth", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        if (response.data.error) {
-          setAuthState(false);
-        } else {
-          setAuthState(true);
-        }
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/auth/auth",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // If no access token set Auth state to false
+      if (response.data.error) {
+        setAuthState(false);
+      } else {
+        setAuthState(true);
+      }
+    });
   }, []);
 
   return (
+    // Auth state check
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <div className={classes.root}>
         <Grid
@@ -54,6 +57,7 @@ function Hero(props) {
             </Box>
           </Grid>
           <Grid item xs={12}>
+            {/* Show register button if user not logged in */}
             {!authState && (
               <>
                 <Box textAlign="center" pt={2}>
@@ -66,6 +70,7 @@ function Hero(props) {
                 </Box>
               </>
             )}
+            {/* Show pitches button if user logged in */}
             {authState && (
               <>
                 <Box textAlign="center" pt={2}>
@@ -73,7 +78,7 @@ function Hero(props) {
                     onClick={() => handleButtonClick("/dashboard/pitches")}
                     className={classes.button}
                   >
-                    Find out more!
+                    View Pitches
                   </Button>
                 </Box>
               </>

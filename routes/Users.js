@@ -135,7 +135,7 @@ router.get('/userinfo/', validateToken, async (req, res) => {
   res.json(userInfo);
 });
 
-// change password
+// Change password
 router.put('/changepassword', validateToken, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const user = await Users.findOne({
@@ -149,7 +149,7 @@ router.put('/changepassword', validateToken, async (req, res) => {
         { password: hash },
         { where: { displayName: req.user.displayName } }
       );
-      res.json('Password changed successfully');
+      res.json('SUCCESS');
     });
   });
 });

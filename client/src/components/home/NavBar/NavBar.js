@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import LogoNav from "../../../images/home/LogoNav.png";
-import useStyles from "./NavBarStyle";
+import useStyles from "./NavBarStyle"; // Component Styles
 import { AuthContext } from "../../../helpers/AuthContext";
 
 function NavBar(props) {
@@ -28,18 +28,20 @@ function NavBar(props) {
 
   const [authState, setAuthState] = useState(false);
 
+  // Access Token Check
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/auth/auth", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        if (response.data.error) {
-          setAuthState(false);
-        } else {
-          setAuthState(true);
-        }
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/auth/auth",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // If no access token set Auth state to false
+      if (response.data.error) {
+        setAuthState(false);
+      } else {
+        setAuthState(true);
+      }
+    });
   }, []);
 
   const handleMenu = (event) => {
@@ -71,6 +73,7 @@ function NavBar(props) {
   }))(IconButton);
 
   return (
+    // Auth state check
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <div className={classes.root} style={{ width: "100%" }}>
         <AppBar className={classes.appBar} style={{ margin: 0 }}>
@@ -81,6 +84,7 @@ function NavBar(props) {
               </LogoButton>
             </Box>
             <div>
+              {/* Mobile Nav Start */}
               {isMobile ? (
                 <>
                   <IconButton
@@ -107,6 +111,7 @@ function NavBar(props) {
                     open={open}
                     onClose={() => setAnchorEl(null)}
                   >
+                    {/* Show login button if user not logged in */}
                     {!authState && (
                       <>
                         <MenuItem
@@ -117,20 +122,23 @@ function NavBar(props) {
                         </MenuItem>
                       </>
                     )}
+                    {/* Show dashboard button if user logged in */}
                     {authState && (
                       <>
                         <MenuItem
                           style={{ color: "white", backgroundColor: "#3bc693" }}
-                          onClick={() => handleMenuClick("/login")}
+                          onClick={() => handleMenuClick("/dashboard/pitches")}
                         >
                           My Dashboard
                         </MenuItem>
                       </>
                     )}
                   </Menu>
+                  {/* Mobile Nav End */}
                 </>
               ) : (
                 <div className={classes.navOptions}>
+                  {/* Nav Start */}
                   {!authState && (
                     <>
                       <Box m={1} pt={2}>
@@ -168,6 +176,7 @@ function NavBar(props) {
                       </Box>
                     </>
                   )}
+                  {/* Nav End */}
                 </div>
               )}
             </div>

@@ -1,3 +1,4 @@
+// !!!!!!!!!!!!!!!!!!!!!! Page currently inactive. Component ready to be used for an email confirm feature !!!!!!!!!!!!!!!!!!!!!!
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {

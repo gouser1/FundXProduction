@@ -17,9 +17,10 @@ import MuiAlert from "@material-ui/lab/Alert";
 import Button from "../../FormsUI/Button/index";
 import countries from "../../../data/countries.json";
 import { AuthContext } from "../../../helpers/AuthContext";
-import useStyles from "./ProfileStyle";
+import useStyles from "./ProfileStyle"; // Component Styles
 
 function Alert(props) {
+  // Success/Fail Alert
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
@@ -45,16 +46,18 @@ function EditProfile(props) {
     status: false,
   });
 
+  // Access Token Check
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
 
+    // Get User's profile info
     axios
       .get("http://localhost:3001/auth/userinfo/", {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
-
+      // Set the form fields to contain the user's data
       .then((response) => {
         setEmail(response.data.email);
         setFirstName(response.data.firstName);
@@ -66,17 +69,19 @@ function EditProfile(props) {
         setBio(response.data.bio);
         setStatus(true);
       });
-  }, [history]);
+  }, []);
 
+  // Edit User's profile info
   const editProfile = (data) => {
     axios({
-      method: "PUT", //you can set what request you want to be
+      method: "PUT",
       url: "http://localhost:3001/auth/updateprofile",
-      data: data,
+      data: data, // PUT user data submited in form
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       },
     }).then(() => {
+      // Show Error/Success Snackbar
       handleSnackBar();
     });
   };
@@ -92,6 +97,7 @@ function EditProfile(props) {
     setOpenSnackBar(false);
   };
 
+  // Formik Edit Profile Form Set State
   const INITIAL_FORM_STATE = {
     email: email,
     firstName: firstName,
@@ -103,6 +109,7 @@ function EditProfile(props) {
     bio: bio,
   };
 
+  // Formik Edit Profile Form Validation
   const FORM_VALIDATION = Yup.object().shape({
     email: Yup.string().email(),
     firstName: Yup.string().required("Please enter your first name").max(25),
@@ -128,6 +135,7 @@ function EditProfile(props) {
                     editProfile(data);
                   }}
                 >
+                  {/* Edit Profile Form Starts Here */}
                   <Form>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
@@ -201,7 +209,9 @@ function EditProfile(props) {
                       </Grid>
                     </Grid>
                   </Form>
+                  {/* Edit Profile Form Ends Here */}
                 </Formik>
+                {/* Alert Snackbars */}
                 <Snackbar
                   open={openSnackBar}
                   autoHideDuration={6000}

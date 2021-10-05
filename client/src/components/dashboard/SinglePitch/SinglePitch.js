@@ -15,7 +15,7 @@ import {
 import ArrowBack from "@material-ui/icons/ArrowBackIos";
 import Location from "@material-ui/icons/LocationOn";
 import userIcon from "../../../images/dashboard/usericon.png";
-import useStyles from "./SinglePitchStyle";
+import useStyles from "./SinglePitchStyle"; // Component Styles
 
 const SingleListing = () => {
   let { id } = useParams();
@@ -26,14 +26,21 @@ const SingleListing = () => {
   };
   const classes = useStyles();
 
+  // Get Single Pitch by ID
   useEffect(() => {
-    axios.get(`http://localhost:3001/pitches/byId/${id}`).then((response) => {
+    axios({
+      method: "get",
+      url: `http://localhost:3001/pitches/byId/${id}`,
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // Set single pitch to response data of GET
       setSinglePitch(response.data);
     });
   }, [id]);
 
   return (
     <div>
+      {/* Back Page */}
       <Button size="small" onClick={goBack} className={classes.button}>
         <ArrowBack color="white" />
         Back
@@ -48,6 +55,7 @@ const SingleListing = () => {
       >
         {" "}
         <Grid item xs={12} sm={10} md={6} lg={10}>
+          {/* Pitch stars here */}
           <Card className={classes.card}>
             <CardContent>
               <CardHeader
@@ -151,6 +159,7 @@ const SingleListing = () => {
               {" "}
             </Grid>
           </Card>
+          {/* Pitch ends here */}
         </Grid>
       </Grid>
     </div>

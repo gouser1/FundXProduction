@@ -21,7 +21,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import userIcon from "../../../images/dashboard/usericon.png";
 import { useHistory, Link } from "react-router-dom";
 import { AuthContext } from "../../../helpers/AuthContext";
-import useStyles from "./FavouritesStyle";
+import useStyles from "./FavouritesStyle"; // Component Styles
 
 const Favourites = () => {
   let history = useHistory();
@@ -35,39 +35,47 @@ const Favourites = () => {
     status: false,
   });
 
+  // Get User Favourites
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/favourite/userfavourites", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setFavouritedPitches(response.data);
-        setIsSet(true);
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/favourite/userfavourites",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // Set Favourites Pitches to response data of GET
+      setFavouritedPitches(response.data);
+      setIsSet(true);
+    });
+    // Access Token Check
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
-  }, [history]);
+  }, []);
 
+  // Favourite Pitch
   const favouritePitch = (pitchId) => {
-    axios
-      .post(
-        "http://localhost:3001/favourite",
-        { PitchId: pitchId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        if (!response.data.favourited) {
-          const newListOfFavouritedPitches = favouritedPitches.filter(function (
-            el
-          ) {
-            return el.PitchId !== pitchId;
-          });
-          setFavouritedPitches([...newListOfFavouritedPitches]);
-        }
-      });
+    axios({
+      method: "post",
+      url: "http://localhost:3001/favourite",
+      data: {
+        PitchId: pitchId,
+      },
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      if (!response.data.favourited) {
+        // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
+        const newListOfFavouritedPitches = favouritedPitches.filter(function (
+          el
+        ) {
+          return el.PitchId !== pitchId;
+        });
+        setFavouritedPitches([...newListOfFavouritedPitches]);
+      }
+    });
   };
+
   if (isSet) {
+    // If No favourites for user then return -
     if (favouritedPitches.length === 0) {
       return (
         <div className={classes.root}>
@@ -91,6 +99,7 @@ const Favourites = () => {
         </div>
       );
     } else {
+      // If the user has favourites then return -
       return (
         <AuthContext.Provider value={{ authState, setAuthState }}>
           <div className={classes.root}>
@@ -108,9 +117,11 @@ const Favourites = () => {
                     Your Favourites
                   </Typography>
                   <Grid container spacing={3}>
+                    {/* List of user's favourites starts here */}
                     {favouritedPitches.map((value, key) => {
                       return (
                         <Grid item xs={12} md={4} lg={4}>
+                          {/* Pitch card starts here */}
                           <Paper className={classes.paper}>
                             <Card className={classes.card}>
                               <CardContent>
@@ -235,9 +246,11 @@ const Favourites = () => {
                               </CardActions>
                             </Card>
                           </Paper>
+                          {/* Pitch card ends here */}
                         </Grid>
                       );
                     })}
+                    {/* List of user's favourites ends here */}
                   </Grid>
                 </Container>
               </Grid>

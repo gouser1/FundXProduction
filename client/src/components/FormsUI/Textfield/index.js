@@ -1,4 +1,4 @@
-/* Code In this file copied and obtained from https://github.com/simpletut/React-Formik-Material-UI-Booking-Form-Template/blob/main/src/Components/FormsUI/Textfield/index.js */
+/* Code In this file is obtained from https://github.com/simpletut/React-Formik-Material-UI-Booking-Form-Template/blob/main/src/Components/FormsUI/Textfield/index.js */
 
 import React from 'react';
 import { TextField } from '@material-ui/core';

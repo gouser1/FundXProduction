@@ -20,10 +20,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PersonIcon from '@material-ui/icons/Person';
 import LogoNav from '../../images/home/LogoNav.png';
 import axios from 'axios';
-import useStyles from './authStyle';
+import useStyles from './authStyle'; // Component Styles
 
 const Register = (props) => {
   const { history } = props;
+
+  // Submit Button Style
   const btnstyle = {
     margin: '8px 0',
     color: 'white',
@@ -33,6 +35,7 @@ const Register = (props) => {
     history.push(pageURL);
   };
 
+  // Formik Initial Form State
   const INITIAL_FORM_STATE = {
     email: '',
     displayName: '',
@@ -41,6 +44,7 @@ const Register = (props) => {
     password: '',
   };
 
+  // Formik Register Form Validation
   const FORM_VALIDATION = Yup.object().shape({
     email: Yup.string().email().required('Required').max(50),
     displayName: Yup.string().required('Required').min(2).max(15),
@@ -75,11 +79,15 @@ const Register = (props) => {
             initialValues={INITIAL_FORM_STATE}
             validationSchema={FORM_VALIDATION}
             onSubmit={(values) => {
-              axios
-                .post('http://localhost:3001/auth', values)
-                .then((response) => {
-                  history.push('/login');
-                });
+              // post register form field values on form submit
+              axios({
+                method: 'post',
+                url: 'http://localhost:3001/auth',
+                values,
+              }).then((response) => {
+                // redirect to login page
+                history.push('/login');
+              });
             }}
           >
             <Form>

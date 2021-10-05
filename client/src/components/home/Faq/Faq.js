@@ -6,7 +6,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import useStyles from "./FaqStyle";
+import useStyles from "./FaqStyle"; // Component Styles
 
 function Faq(props) {
   const classes = useStyles();
@@ -30,6 +30,7 @@ function Faq(props) {
         </Grid>
         <Grid item lg={6} md={6} sm={10} xs={12}>
           <Box>
+            {/* FAQs start here */}
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -154,6 +155,7 @@ function Faq(props) {
                 </Typography>
               </AccordionDetails>
             </Accordion>
+            {/* FAQs end here */}
           </Box>
         </Grid>
       </Grid>

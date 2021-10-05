@@ -20,14 +20,14 @@ import { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import Favorite from "@material-ui/icons/Favorite";
 import Location from "@material-ui/icons/LocationOn";
-import industries from "../../../data/industries.json";
+import industries from "../../../data/industries.json"; // Form data fields
+import countries from "../../../data/countriesFilter.json";
 import cardImage from "../../../images/dashboard/placeholder.png";
 import userIcon from "../../../images/dashboard/usericon.png";
-import countries from "../../../data/countriesFilter.json";
 import { Formik, Form } from "formik";
-import Select from "../../FormsUI/Select/index";
-import Button from "../../FormsUI/Button/index";
-import useStyles from "./AllPitchesStyle";
+import Select from "../../FormsUI/Select/index"; // Form Select
+import Button from "../../FormsUI/Button/index"; // Form Submit button
+import useStyles from "./AllPitchesStyle"; // Component Styles
 
 const AllPitches = () => {
   const [listOfPitches, setListOfPitches] = useState([]);
@@ -39,34 +39,36 @@ const AllPitches = () => {
     getListOfPitches();
   }, []);
 
+  // Get all pitches
   const getListOfPitches = () => {
-    axios
-      .get("http://localhost:3001/pitches", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setListOfPitches(response.data.pitchList);
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/pitches",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      setListOfPitches(response.data.pitchList);
+    });
   };
 
+  // Get filtered list of pitches
   const getFilteredListOfPitches = (data) => {
     let country = data.country === "All" ? "" : data.country;
     let industry = data.industry;
 
-    axios
-      .get(
-        `http://localhost:3001/pitches/?country=${country}&industry=${encodeURIComponent(
-          industry
-        )}`,
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      )
-      .then((response) => {
-        setListOfPitches(response.data.pitchList);
-      });
+    axios({
+      method: "get",
+      // encodeURIComponent used as a querystring parameter
+      url: `http://localhost:3001/pitches/?country=${country}&industry=${encodeURIComponent(
+        industry
+      )}`,
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      // set filtered list response to pitch list
+      setListOfPitches(response.data.pitchList);
+    });
   };
 
+  // Sort by capital needed in descending order
   const sortByLargestCapitalNeeded = () => {
     let newListOfPitches = listOfPitches.sort(
       (a, b) => b.capitalNeeded - a.capitalNeeded
@@ -74,6 +76,7 @@ const AllPitches = () => {
     setListOfPitches([...newListOfPitches]);
   };
 
+  // Sort  by capital needed in ascending order
   const sortBySmallestCapitalNeeded = () => {
     let newListOfPitches = listOfPitches.sort(
       (a, b) => a.capitalNeeded - b.capitalNeeded
@@ -81,44 +84,46 @@ const AllPitches = () => {
     setListOfPitches([...newListOfPitches]);
   };
 
+  // Favourite Pitch
   const favouritePitch = (pitchId) => {
-    axios
-      .post(
-        "http://localhost:3001/favourite",
-        { PitchId: pitchId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        // setting state of list to modified list
-        setListOfPitches(
-          listOfPitches.map((pitch) => {
-            if (pitch.id === pitchId) {
-              if (response.data.favourited) {
-                // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
-                return { ...pitch, Favourites: [...pitch.Favourites, 0] };
-              } else {
-                // Remove last element from array to update state of favourited post to remove favourite
-                const FavouritesArray = pitch.Favourites;
-                FavouritesArray.pop();
-                return { ...pitch, Favourites: FavouritesArray };
-              }
+    axios({
+      method: "post",
+      url: "http://localhost:3001/favourite",
+      data: {
+        PitchId: pitchId,
+      },
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      setListOfPitches(
+        listOfPitches.map((pitch) => {
+          if (pitch.id === pitchId) {
+            if (response.data.favourited) {
+              // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
+              return { ...pitch, Favourites: [...pitch.Favourites, 0] };
             } else {
-              return pitch;
+              // Remove last element from array to update state of favourited post to remove favourite
+              const FavouritesArray = pitch.Favourites;
+              FavouritesArray.pop();
+              return { ...pitch, Favourites: FavouritesArray };
             }
+          } else {
+            return pitch;
+          }
+        })
+      );
+      if (favouritedPitches.includes(pitchId)) {
+        setFavouritedPitches(
+          favouritedPitches.filter((id) => {
+            return id !== pitchId;
           })
         );
-        if (favouritedPitches.includes(pitchId)) {
-          setFavouritedPitches(
-            favouritedPitches.filter((id) => {
-              return id !== pitchId;
-            })
-          );
-        } else {
-          setFavouritedPitches([...favouritedPitches, pitchId]);
-        }
-      });
+      } else {
+        setFavouritedPitches([...favouritedPitches, pitchId]);
+      }
+    });
   };
 
+  // Formik Initial Form State
   const INITIAL_FORM_STATE = {
     country: "",
     industry: "",
@@ -207,10 +212,12 @@ const AllPitches = () => {
                 Smallest Capital Needed
               </NormalButton>
             </Box>
+            {/* List of all pitches displayed here */}
             <Grid container spacing={3}>
               {listOfPitches.map((value, key) => {
                 return (
                   <Grid item xs={12} md={4} lg={4}>
+                    {/* Pitch Card Start */}
                     <Paper className={classes.paper}>
                       <Card className={classes.card}>
                         <CardContent>
@@ -323,6 +330,7 @@ const AllPitches = () => {
                         </CardActions>
                       </Card>
                     </Paper>
+                    {/* Pitch Card End */}
                   </Grid>
                 );
               })}

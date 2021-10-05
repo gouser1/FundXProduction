@@ -13,21 +13,23 @@ import {
   MenuItem,
   Typography,
 } from "@material-ui/core";
-
+// Icons
 import Home from "@material-ui/icons/Home";
 import Note from "@material-ui/icons/Note";
 import Create from "@material-ui/icons/Create";
 import Favorite from "@material-ui/icons/Favorite";
 import Person from "@material-ui/icons/Person";
 import ExitToApp from "@material-ui/icons/ExitToApp";
+import MyPitchesLogo from "@material-ui/icons/HowToReg";
+
 import { Route, useHistory, Switch } from "react-router-dom";
 import LogoNav from "../../../images/dashboard/LogoNav.png";
+import useStyles from "./DashboardStyle"; // Component Styles
+// Components
 import Pitches from "../Pitches/Pitches";
 import AllPitches from "../AllPitches/AllPitches";
 import ChangePassword from "../ChangePassword/ChangePassword";
 import CreatePitch from "../CreatePitch/CreatePitch";
-import MyPitchesLogo from "@material-ui/icons/HowToReg";
-import useStyles from "./DashboardStyle";
 import Favourites from "../Favourites/Favourites";
 import AdminPanel from "../AdminPanel/AdminPanel";
 import EditProfile from "../Profile/EditProfile";
@@ -36,6 +38,7 @@ import Profile from "../Profile/Profile";
 import SinglePitch from "../SinglePitch/SinglePitch";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import MyPitches from "../MyPitches/MyPitches";
+
 import { AuthContext } from "../../../helpers/AuthContext";
 import axios from "axios";
 
@@ -49,22 +52,24 @@ function Dashboard(props) {
     status: false,
   });
 
+  // Set Auth State
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/auth/auth", {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        if (response.data.error) {
-          setAuthState({ ...authState, status: false });
-        } else {
-          setAuthState({
-            displayName: response.data.displayName,
-            id: response.data.id,
-            status: true,
-          });
-        }
-      });
+    axios({
+      method: "get",
+      url: "http://localhost:3001/auth/auth",
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response) => {
+      if (response.data.error) {
+        // If no access token then return auth state to false
+        setAuthState({ ...authState, status: false });
+      } else {
+        setAuthState({
+          displayName: response.data.displayName,
+          id: response.data.id,
+          status: true,
+        });
+      }
+    });
   }, []);
 
   const LogoButton = withStyles(() => ({
@@ -73,13 +78,17 @@ function Dashboard(props) {
     },
   }))(IconButton);
 
+  // Logout
   const logout = () => {
+    // remove access token
     localStorage.removeItem("accessToken");
+    // clear auth state
     setAuthState({
       displayName: "",
       id: 0,
       status: false,
     });
+    // redirec to homepage
     history.push("/");
   };
 
@@ -120,6 +129,7 @@ function Dashboard(props) {
                     {authState.displayName}
                   </Typography>
                   <Box className={classes.containerItem}>
+                    {/* NavBar Menu Starts Here */}
                     <Menu
                       id="simple-menu"
                       anchorEl={anchorEl}
@@ -145,6 +155,7 @@ function Dashboard(props) {
                         Logout
                       </MenuItem>
                     </Menu>
+                    {/* NavBar Menu Ends Here */}
                   </Box>
                   <Avatar>
                     <img
@@ -160,7 +171,7 @@ function Dashboard(props) {
             )}
           </Toolbar>
         </AppBar>
-
+        {/* SideBar Nav Starts Here */}
         <Grid container>
           <Grid item xs={2}>
             <Container className={classes.container}>
@@ -194,6 +205,7 @@ function Dashboard(props) {
                   </Typography>
                 </Hidden>
               </Box>
+              {/* Only Show if Logged in Link Start Here */}
               {authState.status && (
                 <>
                   <Box className={classes.containerItem}>
@@ -298,7 +310,9 @@ function Dashboard(props) {
                   </Box>
                 </>
               )}
+              {/* Only Show if Logged in Link End Here */}
 
+              {/* Only Show if Not Logged In Links Start Here */}
               {!authState.status && (
                 <>
                   <Box className={classes.containerItem}>
@@ -317,9 +331,11 @@ function Dashboard(props) {
                   </Box>
                 </>
               )}
+              {/* Only Show if Not Logged In Links End Here */}
             </Container>
           </Grid>
           <Grid container item xs={10}>
+            {/* Routes Start Here */}
             <Switch>
               <Route path="/dashboard/pitches" exact component={Pitches} />
               <Route
@@ -367,8 +383,10 @@ function Dashboard(props) {
               />
               <Route path="*" exact component={PageNotFound} />
             </Switch>
+            {/* Routes End Here */}
           </Grid>
         </Grid>
+        {/* SideBar Nav Ends Here */}
       </AuthContext.Provider>
     </div>
   );

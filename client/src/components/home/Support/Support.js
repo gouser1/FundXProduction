@@ -16,7 +16,7 @@ import {
 import emailjs from "emailjs-com";
 import MuiAlert from "@material-ui/lab/Alert";
 import ContactImage from "../../../images/home/contact.svg";
-import useStyles from "./SupportStyle";
+import useStyles from "./SupportStyle"; // Component Styles
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -49,13 +49,15 @@ function Support(props) {
   };
   const classes = useStyles();
 
+  // EmailJS - submit support form
   const sendEmail = (e) => {
     e.preventDefualt();
     emailjs.sendForm(
-      "service_97nbygu",
-      "service_97nbygu",
+      "service_97nbygu", // Replace with your EMailJS service id
+      "service_97nbygu", // Replace with your EMailJS service id
       e.target,
       "user_8kEbzGq4FkNruvj1rGfFW"
+      // Replace with your EMailJS user id
     );
     e.target.reset();
   };
@@ -108,7 +110,7 @@ function Support(props) {
                 </Button>
               </Box>
             </Hidden>
-
+            {/* Contact Form Start */}
             <Dialog
               open={open}
               onClose={handleClose}
@@ -182,6 +184,7 @@ function Support(props) {
                 </DialogActions>
               </form>
             </Dialog>
+            {/* Contact Form End */}
           </Box>
         </Grid>
         <Grid item lg={4} md={12} sm={12} xs={12}>
@@ -192,7 +195,7 @@ function Support(props) {
           </Hidden>
         </Grid>
       </Grid>
-
+      {/* Snackbar alert message when support message is sent */}
       <Snackbar
         open={openSnackBar}
         autoHideDuration={6000}

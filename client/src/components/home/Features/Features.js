@@ -3,7 +3,7 @@ import { Grid, Box, Hidden, Typography } from "@material-ui/core";
 import GrowthImage from "../../../images/home/growth.svg";
 import ConnectImage from "../../../images/home/connect.svg";
 import MobileImage from "../../../images/home/mobileview.png";
-import useStyles from "./FeaturesStyle";
+import useStyles from "./FeaturesStyle"; // Component Styles
 
 function Features(props) {
   const classes = useStyles();

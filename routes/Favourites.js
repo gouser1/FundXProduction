@@ -3,7 +3,6 @@ const router = express.Router();
 const { Favourites, Pitches } = require('../models');
 const { validateToken } = require('../middlewares/Auth');
 
-// Favourite Pitch
 router.post('/', validateToken, async (req, res) => {
   const { PitchId } = req.body;
   const UserId = req.user.id;
@@ -12,30 +11,29 @@ router.post('/', validateToken, async (req, res) => {
     where: { id: PitchId },
   });
 
-  // Check if user has favourited the Pitch
   if (pitchExists) {
-    const foundPitch = await Favourites.findOne({
+    const found = await Favourites.findOne({
       where: { PitchId: PitchId, UserId: UserId },
     });
 
-    if (!foundPitch) {
-      // If the user has no favourited then add favourite to favourites table
+    //    Check if user has liked Pitch. If found no like then add favourite to favourites table, if not destroy the favourite from favourites table
+    if (!found) {
       await Favourites.create({ PitchId: PitchId, UserId: UserId });
+      res.json({ favourited: true });
     } else {
-      // If the user has favourited, then delete favourite from favourites table
       await Favourites.destroy({
         where: {
           PitchId: PitchId,
           UserId: UserId,
         },
       });
+      res.json({ favourited: false });
     }
   } else {
     res.json({ error: 'Pitch does not exist' });
   }
 });
 
-// Get all of logged in users favourites
 router.get('/userfavourites', validateToken, async (req, res, next) => {
   const usersFavourites = await Favourites.findAll({
     include: [

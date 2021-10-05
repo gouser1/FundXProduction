@@ -19,7 +19,7 @@ import LogoNav from '../../images/home/LogoNav.png';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import axios from 'axios';
-import useStyles from './authStyle';
+import useStyles from './authStyle'; // Component Styles
 import { AuthContext } from '../../helpers/AuthContext';
 
 const Login = (props) => {
@@ -29,6 +29,8 @@ const Login = (props) => {
   const { setAuthState } = useContext(AuthContext);
 
   const { history } = props;
+
+  // Submit Button Style
   const btnstyle = {
     margin: '8px 0',
     color: 'white',
@@ -43,22 +45,32 @@ const Login = (props) => {
 
   const LogoButton = withStyles(() => ({}))(IconButton);
 
+  // Formik Initial Form State
   const INITIAL_FORM_STATE = {
     email: '',
     password: '',
   };
 
+  // Formik Login Form Validation
   const FORM_VALIDATION = Yup.object().shape({
     email: Yup.string().required('Required').email(),
     password: Yup.string().required('Required'),
   });
 
+  // User login
   const loginSubmit = () => {
     const data = { email: email, password: password };
-    axios.post('http://localhost:3001/auth/login', data).then((response) => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/auth/login',
+      data,
+      headers: { accessToken: localStorage.getItem('accessToken') },
+    }).then((response) => {
+      // If login unsuccesfull, alert with error response
       if (response.data.error) {
         alert(response.data.error);
       } else {
+        // If login succesfull, create local access token and direct to dashboard
         localStorage.setItem('accessToken', response.data);
         setAuthState(true);
         history.push('/dashboard/pitches');

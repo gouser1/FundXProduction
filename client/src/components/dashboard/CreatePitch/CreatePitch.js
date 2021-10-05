@@ -6,20 +6,21 @@ import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 import Textfield from "../../FormsUI/Textfield/index";
 import Tooltip from "@material-ui/core/Tooltip";
-import Select from "../../FormsUI/Select/index";
-import Button from "../../FormsUI/Button/index";
-import countries from "../../../data/countries.json";
+import Select from "../../FormsUI/Select/index"; // Form Select
+import Button from "../../FormsUI/Button/index"; // Form Submit button
+import countries from "../../../data/countries.json"; // Form data fields
 import locations from "../../../data/locations.json";
 import industries from "../../../data/industries.json";
 import investmentRoles from "../../../data/investmentRoles.json";
 import capitalAmounts from "../../../data/capitalAmounts.json";
 import { AuthContext } from "../../../helpers/AuthContext";
-import useStyles from "./CreatePitchStyle";
+import useStyles from "./CreatePitchStyle"; // Component Styles
 
 function CreatePitch(props) {
   let history = useHistory();
   const classes = useStyles();
 
+  // Formik Initial Form State
   const INITIAL_FORM_STATE = {
     pitchTitle: "",
     contactEmail: "",
@@ -40,12 +41,14 @@ function CreatePitch(props) {
     status: false,
   });
 
+  // Access Token Check
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
-  }, [history]);
+  }, []);
 
+  // Formik Create Pitch Form Validation
   const FORM_VALIDATION = Yup.object().shape({
     pitchTitle: Yup.string()
       .required("Please enter a pitch title")
@@ -74,19 +77,23 @@ function CreatePitch(props) {
         <Grid item xs={10} lg={6} style={{ paddingTop: "2%" }}>
           <Container maxWidth="md">
             <div className={classes.formWrapper}>
+              {/* Create Pitch Form Starts Here */}
               <Formik
                 initialValues={INITIAL_FORM_STATE}
                 validationSchema={FORM_VALIDATION}
                 onSubmit={(data) => {
-                  axios
-                    .post("http://localhost:3001/pitches", data, {
-                      headers: {
-                        accessToken: localStorage.getItem("accessToken"),
-                      },
-                    })
-                    .then((response) => {
-                      history.push("/dashboard/mypitches");
-                    });
+                  // post create pitch field values on form submit
+                  axios({
+                    method: "post",
+                    url: "http://localhost:3001/pitches",
+                    data,
+                    headers: {
+                      accessToken: localStorage.getItem("accessToken"),
+                    },
+                  }).then((response) => {
+                    // redirect to my pitches
+                    history.push("/dashboard/mypitches");
+                  });
                 }}
               >
                 <Form>
@@ -218,6 +225,7 @@ function CreatePitch(props) {
                   </Grid>
                 </Form>
               </Formik>
+              {/* Create Pitch Form Ends Here */}
             </div>
           </Container>
         </Grid>
