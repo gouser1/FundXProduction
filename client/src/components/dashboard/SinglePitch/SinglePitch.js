@@ -17,7 +17,7 @@ import Location from "@material-ui/icons/LocationOn";
 import userIcon from "../../../images/dashboard/usericon.png";
 import useStyles from "./SinglePitchStyle"; // Component Styles
 
-const SingleListing = () => {
+const SinglePitch = () => {
   let { id } = useParams();
   const [singlePitch, setSinglePitch] = useState({});
   const history = useHistory();
@@ -166,4 +166,4 @@ const SingleListing = () => {
   );
 };
 
-export default SingleListing;
+export default SinglePitch;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -11,6 +10,7 @@ import {
   Typography,
   withStyles,
   IconButton,
+  Link,
 } from '@material-ui/core';
 import Textfield from '../FormsUI/Textfield/index';
 import Button from '../FormsUI/Button/index';
@@ -44,7 +44,7 @@ const Register = (props) => {
     password: '',
   };
 
-  // Formik Register Form Validation
+  // Yup Register Form Validation
   const FORM_VALIDATION = Yup.object().shape({
     email: Yup.string().email().required('Required').max(50),
     displayName: Yup.string().required('Required').min(2).max(15),
@@ -227,4 +227,4 @@ const Register = (props) => {
   );
 };
 
-export default withRouter(Register);
+export default Register;

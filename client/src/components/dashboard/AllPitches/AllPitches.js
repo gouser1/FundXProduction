@@ -43,7 +43,7 @@ const AllPitches = () => {
   const getListOfPitches = () => {
     axios({
       method: "get",
-      url: "http://localhost:3001/pitches",
+      url: "https://fundx-jamesgilliland.herokuapp.com/pitches",
       headers: { accessToken: localStorage.getItem("accessToken") },
     }).then((response) => {
       setListOfPitches(response.data.pitchList);
@@ -58,7 +58,7 @@ const AllPitches = () => {
     axios({
       method: "get",
       // encodeURIComponent used as a querystring parameter
-      url: `http://localhost:3001/pitches/?country=${country}&industry=${encodeURIComponent(
+      url: `https://fundx-jamesgilliland.herokuapp.com/pitches/?country=${country}&industry=${encodeURIComponent(
         industry
       )}`,
       headers: { accessToken: localStorage.getItem("accessToken") },

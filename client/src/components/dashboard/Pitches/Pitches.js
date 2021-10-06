@@ -81,14 +81,15 @@ const Pitches = () => {
     }).then((response) => {
       setListOfPitches(
         listOfPitches.map((pitch) => {
+          // Map to access individual elements
           if (pitch.id === pitchId) {
             if (response.data.favourited) {
-              // Destructure pitch and modify favourites field and adding 0 so the length is modified to favourite the post
-              return { ...pitch, Favourites: [...pitch.Favourites, 0] };
+              // If pitch is favourited, destructure favourites array and add "1" element to array
+              return { ...pitch, Favourites: [...pitch.Favourites, 1] };
             } else {
-              // Remove last element from array to update state of favourited post to remove favourite
+              // Remove favourite
               const FavouritesArray = pitch.Favourites;
-              FavouritesArray.pop();
+              FavouritesArray.pop(); // Pop to remove last element of array
               return { ...pitch, Favourites: FavouritesArray };
             }
           } else {

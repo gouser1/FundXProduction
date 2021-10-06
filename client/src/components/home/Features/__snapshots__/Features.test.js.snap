@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-content-xs-center"
+    style={
+      Object {
+        "minHeight": "100vh",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-7 makeStyles-box-6"
+      >
+        <p
+          className="MuiTypography-root makeStyles-h1-3 MuiTypography-body1"
+        >
+          How does it work?
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-8 makeStyles-box-6"
+      >
+        <p
+          className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+        >
+          Connecting companies to investors for maximum growth
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-9"
+      >
+        <p
+          className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+        >
+          FundX makes it simple to connect companies to potential investors, making it easy for you to find the investment you need for your company to grow. Sign up today to create or Pitch or continue as a guest user to explore the wide range of pitches within FundX!
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    />
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    />
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-10 makeStyles-box-6"
+      >
+        <p
+          className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+        >
+          Create and publish your pitch
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-11"
+      >
+        <p
+          className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+        >
+          Add a pitch for your business using our create a Pitch section. The on-screen tips will guide you through the creation process of your Pitch. We've also got some great resources to help if you get stuck you should check our FAQ and support sections. When your pitch has been created, it will be listed on the site for prospective investors to browse and evaluate. Investors can then contact you if they are interested.
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-12 makeStyles-box-6"
+      >
+        <p
+          className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+        >
+          Explore pitches and store them for later
+        </p>
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-13"
+      >
+        <p
+          className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+        >
+          Our main pitches section of FundX allows you to randomly search through the pitches to find something unique you may not have been looking for. You can also view all the pitches and sort through them to find a pitch tailored for your interest. Favouriting the pitches will store them in your Favourites in case you want to come back to it later on.
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12 MuiGrid-grid-lg-6"
+    />
+  </div>
+</div>
+`;

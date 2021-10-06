@@ -92,4 +92,4 @@ function Hero(props) {
   );
 }
 
-export default withRouter(Hero);
+export default Hero;

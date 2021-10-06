@@ -164,6 +164,7 @@ function NavBar(props) {
                     <>
                       <Box m={1} pt={2}>
                         <NavButton
+                          data-testid="button"
                           variant="contained"
                           className={classes.button}
                           style={{ color: "white" }}
@@ -186,4 +187,4 @@ function NavBar(props) {
     </AuthContext.Provider>
   );
 }
-export default withRouter(NavBar);
+export default NavBar;

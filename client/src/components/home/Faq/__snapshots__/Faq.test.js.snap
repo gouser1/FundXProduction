@@ -1,0 +1,744 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-content-xs-center"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-6"
+      >
+        <p
+          className="MuiTypography-root makeStyles-h1-3 MuiTypography-body1"
+        >
+          Frequently Asked Questions
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-7"
+      >
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel1a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel1a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                Do I have to sign up to use FundX?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel1a-header"
+                  id="panel1a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      No, you can use our application as a guest user and still have access to a range of our features. Guest users will be able to see pitches and contact users.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                What is FundX
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      FundX is an Angel-led Investment platform that connects high grow potentional companies with experienced investors.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                What can I do with FundX?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      FundX allows you to create or find pitches from companies looking to grow and expand their business.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                How do I start?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      Sign up for free
+                       
+                      <a
+                        className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                      >
+                         
+                        here
+                         
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                How reliable is FundX?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      We have an average uptime of 99,9%. Any system related issues are reported and updated
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                How does FundX ensure security?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      FundX enforces a password complexity standard and credentials are encrypted when stored in the database.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2a-content"
+            aria-disabled={false}
+            aria-expanded={false}
+            className="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2a-header"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <div
+              className="MuiAccordionSummary-content"
+            >
+              <p
+                className="MuiTypography-root makeStyles-h2-4 MuiTypography-body1"
+              >
+                How do I track pitches I am intersted in?
+              </p>
+            </div>
+            <div
+              aria-disabled={false}
+              aria-hidden={true}
+              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role={null}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            className="MuiCollapse-root MuiCollapse-hidden"
+            style={
+              Object {
+                "minHeight": "0px",
+              }
+            }
+          >
+            <div
+              className="MuiCollapse-wrapper"
+            >
+              <div
+                className="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2a-header"
+                  id="panel2a-content"
+                  role="region"
+                >
+                  <div
+                    className="MuiAccordionDetails-root"
+                  >
+                    <p
+                      className="MuiTypography-root makeStyles-p1-5 MuiTypography-body1"
+                    >
+                      FundX has a favourite system for registered users so you can easily keep track of them.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

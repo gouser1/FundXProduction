@@ -70,4 +70,4 @@ const EmailConfirm = (props) => {
   );
 };
 
-export default withRouter(EmailConfirm);
+export default EmailConfirm;

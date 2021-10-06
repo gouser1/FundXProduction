@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -12,6 +12,7 @@ import {
   withStyles,
   Grid,
   TextField,
+  Link,
   Button,
 } from '@material-ui/core';
 import Email from '@material-ui/icons/Email';
@@ -184,4 +185,4 @@ const Login = (props) => {
   );
 };
 
-export default withRouter(Login);
+export default Login;

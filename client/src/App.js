@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthContext } from './helpers/AuthContext';
 
+// Set theme primary colour for MaterialUI
 const theme = createTheme({
   palette: {
     primary: {
@@ -36,6 +37,7 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <AuthContext.Provider value={{ authState, setAuthState }}>
           <Router>
+            {/* Routes Start Here*/}
             <Switch>
               <Route path='/' exact component={NavBar} />
               <Route path='/login' exact component={Login} />
@@ -51,6 +53,7 @@ const App = (props) => {
             <Route path='/' exact component={Hero2} />
             <Route path='/' exact component={Faq} />
             <Route path='/' exact component={Support} />
+            {/* Routes End Here*/}
           </Router>
         </AuthContext.Provider>
       </ThemeProvider>

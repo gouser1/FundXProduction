@@ -44,7 +44,6 @@ function CreatePitch(props) {
   // Access Token Check
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      history.push("/login");
     }
   }, []);
 
